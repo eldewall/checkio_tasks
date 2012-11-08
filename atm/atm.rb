@@ -16,7 +16,7 @@ class ATM
 
  private
     def draw(amount)
-        @balance -= amount if valid_amount?(amount) 
+        @balance -= amount + commision(amount) if valid_amount?(amount) 
     end
 
     def valid_amount?(amount)
