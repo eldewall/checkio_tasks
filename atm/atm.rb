@@ -6,8 +6,7 @@ class ATM
     end
 
     def withdraw(amount)
-        amount = Array(amount) unless amount.kind_of?(Array)
-        amount.each { |amount| draw(amount) }
+        Array(amount).each { |amount| draw(amount) }
     end
 
     def commision(amount)
