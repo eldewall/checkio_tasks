@@ -1,13 +1,13 @@
 require_relative 'validator'
 
-class HasUpperCaseValidator < Validator
+class HasDownCaseValidator < Validator
 
     def initialize
         @is_valid = false
     end
 
     def validate(char)
-       @is_valid = is_upper?(char) unless @is_valid 
+       @is_valid = !is_digit?(char) && is_down?(char) unless @is_valid 
     end
 
     def valid?
