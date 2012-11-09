@@ -15,7 +15,7 @@ describe HasUpperCaseValidator do
             @valid_str.chars.to_a.each { |c| @validator.validate(c) }
             @validator.valid?.must_equal true
         end
-
+ 
         it "should be false when wrong number characters has been passed" do
             "aaaaaaa".chars.to_a.each { |c| @validator.validate(c) }
             @validator.valid?.must_equal false

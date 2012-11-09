@@ -12,6 +12,12 @@ describe LengthValidator do
             @valid_str = "0987654abc"
         end
 
+        it "passes example 1" do
+            @valid_str = "A1213pokl"
+            @valid_str.chars.to_a.each { |c| @validator.validate(c) }
+            @validator.valid?.must_equal false
+        end 
+
         it "should be true when the given number of characters has been passed" do
             @valid_str.chars.to_a.each { |c| @validator.validate(c) }
             @validator.valid?.must_equal true

@@ -16,9 +16,12 @@ class HousePassword
     end
 
     def valid?
-        @password.chars.to_a.each { |c| @validators.each { |v| v.validate(c) } }
-        
-        valid = @validators.map(&:valid?).count(false) == 0
+      @validate ||= validate
     end
 
+  private 
+    def validate
+        @password.chars.to_a.each { |c| @validators.each { |v| v.validate(c) } }
+        @validators.map(&:valid?).count(false) == 0
+    end
 end

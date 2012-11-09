@@ -7,7 +7,7 @@ class HasUpperCaseValidator < Validator
     end
 
     def validate(char)
-       @is_valid = is_upper?(char) unless @is_valid 
+       @is_valid = !is_digit?(char) && is_upper?(char) unless @is_valid 
     end
 
     def valid?
