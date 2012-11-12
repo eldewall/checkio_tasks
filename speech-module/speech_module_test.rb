@@ -21,6 +21,10 @@ describe SpeechModule do
             @module.interpret(133).must_equal "one hundred thirty three"
         end
 
+        it "extra 3" do
+            @module.interpret(200).must_equal "two hundred"
+        end
+
         it "checkio 3" do
             @module.interpret(12).must_equal "twelve"
         end

@@ -20,11 +20,14 @@ class SpeechModule
  
         answer << @low[hundred - 1] + " hundred" if hundred
 
-        if (tens * 10) + single > 19
-            answer << @tens[tens - 2]
-            answer << @low[single - 1] if single > 0
-        else
-            answer << @low[tens * 10 + single - 1]
+        low = (tens * 10) + single
+        if low > 0
+            if low > 19
+                answer << @tens[tens - 2]
+                answer << @low[single - 1] if single > 0
+            else
+                answer << @low[tens * 10 + single - 1]
+            end
         end
 
         answer.join(' ')
