@@ -7,11 +7,7 @@ class SpeechModule
 
         @tens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty",
                  "ninety"]
-
-        @hundred = " hundred "
-        @thousand = "thousand"
     end
-
 
     def interpret(number)
         return "one thousand" if number == 1000
