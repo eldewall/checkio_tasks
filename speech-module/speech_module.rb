@@ -15,13 +15,17 @@ class SpeechModule
         answer = []
         
         hundred = SpeechModule.number_on_position(number, 100) if number > 99
-        answer << @low[hundred - 1] + " hundred" if hundred
-       
-        tens = SpeechModule.number_on_position(number, 10) if number > 20
-        answer << @tens[tens - 2] if tens
-
+        tens = SpeechModule.number_on_position(number, 10)
         single = SpeechModule.number_on_position(number, 1)
-        answer << @low[single -1] if single > 0
+ 
+        answer << @low[hundred - 1] + " hundred" if hundred
+
+        if (tens * 10) + single > 19
+            answer << @tens[tens - 2]
+            answer << @low[single - 1] if single > 0
+        else
+            answer << @low[tens * 10 + single - 1]
+        end
 
         answer.join(' ')
     end
