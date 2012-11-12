@@ -14,12 +14,23 @@ class SpeechModule
 
 
     def interpret(number)
-        hundred  = (number / 100) - 1 if number >= 100
-        
-        answer = ''
-        answer += @low[hundred] + @hundred if hundred
-        
+        return "one thousand" if number == 1000
 
-        answer
+        answer = []
+        
+        hundred = SpeechModule.number_on_position(number, 100) if number > 99
+        answer << @low[hundred - 1] + " hundred" if hundred
+       
+        tens = SpeechModule.number_on_position(number, 10) if number > 20
+        answer << @tens[tens - 2] if tens
+
+        single = SpeechModule.number_on_position(number, 1)
+        answer << @low[single -1] if single > 0
+
+        answer.join(' ')
+    end
+
+    def self.number_on_position(num, pos)
+        ((num % (pos * 10)) - num % pos) / pos
     end
 end
