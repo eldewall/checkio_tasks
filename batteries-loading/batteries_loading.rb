@@ -3,7 +3,7 @@ class BatteryLoader
     def self.combination_best_of(batteries)
         best = batteries.inject(:+)
 
-        batteries.length.times do |i| 
+        batteries.length.times do |i|
             batteries.combination(i).each do |c|
                 left = self.sum(c)
                 right = (self.sum(c) - self.sum(batteries)).abs
