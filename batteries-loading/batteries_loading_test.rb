@@ -8,24 +8,9 @@ describe BatteryLoader do
     describe "balance" do
 
         it "example 1" do
-            BatteryLoader.balance([10,10]).must_equal 0
+            BatteryLoader.balance([12, 30, 30, 32,42,49 ]).must_equal 9
         end
 
-        it "xample 5" do
-            BatteryLoader.balance([5, 8, 13, 27, 14]).must_equal 3
-        end
-
-        it "example 2" do
-            BatteryLoader.balance([12, 30, 30, 32, 42, 49]).must_equal 9
-        end
- 
-        it "example 3" do
-            BatteryLoader.balance([1,1,1,3]).must_equal 0
-        end
-
-        it "example 4" do
-            BatteryLoader.balance([5,5,6,5]).must_equal 1
-        end
     end
 
 
@@ -54,5 +39,4 @@ describe BatteryLoader do
             BatteryLoader.diff([1], [29, 30]).must_equal 58
         end
     end
-
 end

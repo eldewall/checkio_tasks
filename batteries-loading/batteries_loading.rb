@@ -9,23 +9,12 @@ class BatteryLoader
             right = Array.new(batteries)
             left = right.slice!(i, 1)
 
-            puts "l_start:" + left.to_s
-            puts "r_start:" + right.to_s
-
             diff = BatteryLoader.diff(left, right)
             best = diff if diff <= best
 
-            num = right.length
-
-            puts "num_times:" + num.to_s
-
-            num.times do |x|
+            right.length.times do
                 left.concat(right.slice!(0, 1))
-                puts "l:" + left.to_s
-                puts "r:" + right.to_s
-
                 diff = BatteryLoader.diff(left, right)
-
                 best = diff if diff <= best
             end
         end
@@ -34,11 +23,10 @@ class BatteryLoader
     end
 
     def self.balance(batteries)
+        a = self.best_of(batteries)
+        b = self.best_of(batteries.reverse())
 
-        first = self.best_of(batteries)
-        second = self.best_of(batteries.reverse())
-
-        first <= second ? first : second
+        a > b ? a : b
     end
 
     def self.sum(arr)
