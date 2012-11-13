@@ -21,8 +21,8 @@ class HousePassword
 
   private 
     def validate
-        @password.chars.to_a.each { |c| @validators.each { |v| v.validate(c) } }
-        
+        @password.each_char { |c| @validators.each { |v| v.validate(c) } }
+
         @validators.map(&:valid?).inject(&:&)
     end
 end

@@ -14,6 +14,7 @@ def checkio(batteries):
 
 if __name__ == '__main__':
     assert checkio([10]) == 10, 'First'
+    assert checkio([10, 10]) == 0, 'wut'
     assert checkio([12,30,30,32,42,49]) == 9, 'Second' 
 
     print('All Ok')
