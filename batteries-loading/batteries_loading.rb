@@ -1,8 +1,8 @@
 class BatteryLoader
 
     def self.best_of(batteries)
-        right = []
-        left = []
+        right = [], left = []
+        
         best = batteries.inject(:+)
 
         batteries.length.times do |i|
@@ -24,9 +24,6 @@ class BatteryLoader
 
     def self.balance(batteries)
         a = self.best_of(batteries)
-        b = self.best_of(batteries.reverse())
-
-        a > b ? a : b
     end
 
     def self.sum(arr)
