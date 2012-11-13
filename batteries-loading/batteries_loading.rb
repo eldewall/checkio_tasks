@@ -1,21 +1,14 @@
 class BatteryLoader
 
-    def self.best_of(batteries)
-        right = [], left = []
-        
+    def self.combination_best_of(batteries)
         best = batteries.inject(:+)
 
-        batteries.length.times do |i|
-            right = Array.new(batteries)
-            left = right.slice!(i, 1)
-
-            diff = BatteryLoader.diff(left, right)
-            best = diff if diff <= best
-
-            right.length.times do
-                left.concat(right.slice!(0, 1))
-                diff = BatteryLoader.diff(left, right)
-                best = diff if diff <= best
+        batteries.length.times do |i| 
+            batteries.combination(i).each do |c|
+                left = self.sum(c)
+                right = (self.sum(c) - self.sum(batteries)).abs
+                diff = (left - right).abs
+                best = diff unless diff > best
             end
         end
 
@@ -23,7 +16,7 @@ class BatteryLoader
     end
 
     def self.balance(batteries)
-        a = self.best_of(batteries)
+        x = self.combination_best_of(batteries)
     end
 
     def self.sum(arr)
@@ -36,11 +29,5 @@ class BatteryLoader
         end
 
     end
-
-    def self.diff(arr1, arr2)
-        a1_sum = BatteryLoader.sum(arr1)
-        a2_sum = BatteryLoader.sum(arr2)
-
-        sum = (a1_sum - a2_sum).abs
-    end
 end
+
